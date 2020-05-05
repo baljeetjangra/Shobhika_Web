@@ -7,5 +7,4 @@ from django.db import models
 class destination(models.Model):
     name = models.CharField(max_length=50)
     desc = models.TextField()
-    price = models.IntegerField()
-    offer = models.BooleanField()
+    offer = models.BooleanField(default=False)

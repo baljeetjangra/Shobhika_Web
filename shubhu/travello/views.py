@@ -3,8 +3,6 @@ from .models import destination
 
 
 # Create your views here.
-
-
 def index(request):
     dest1 = destination()
     dest1.name = 'Udaipur'

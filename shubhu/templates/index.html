@@ -31,11 +31,31 @@
                             <div class="logo"><a href="index.html">Tourism</a></div>
                             <nav class="main_nav">
                                 <ul class="d-flex flex-row align-items-start justify-content-start">
+                                    <style>
+                                        li a {
+                                             display: block;
+                                                 color: white;
+                                                text-align: center;
+                                            text-decoration: none;
+                                        }
+
+                                        li a:hover {
+                                         background-color: #A9A9A9;
+                                        }
+
+
+                                    </style>
                                     <li class="active"><a href="{% static 'index.html' %}">Home</a></li>
-                                    <li><a href="about.html">About us</a></li>
-                                    <li><a href="#">Services</a></li>
-                                    <li><a href="news.html">News</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="{% url 'profile' %}">About us</a></li>
+                                    <li><a href="https://www.facebook.com/ShobhikaGarg/">Facebook</a></li>
+
+                                    {% if user.is_authenticated %}
+                                    <li><strong>Hello,{{user.first_name}}</strong></li>
+                                    <li><a href="accounts/logout">Logout</a></li>
+                                    {% else %}
+                                    <li><a href="accounts/register">Register</a></li>
+                                    <li><a href="accounts/login">Login</a></li>
+                                    {% endif %}
                                 </ul>
                             </nav>
                             <div class="header_phone ml-auto">Call us: 00-56 445 678 33</div>
@@ -259,6 +279,9 @@
                     <div class="destination item">
                         <div class="destination_image">
                             <img alt="" src="{{baseUrl}}/{{dest.img}}">
+                            {% if dest.offer %}
+                            <div class="spec_offer text-center"><a href="#">Special Offer</a></div>
+                            {% endif %}
                         </div>
                         <div class="destination_content">
                             <div class="destination_title"><a href="destinations.html">{{dest.name}}</a></div>
